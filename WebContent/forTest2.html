@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+   function sizeToMeter() {
+
+      let result = document.querySelector("#text1").value;
+
+      let size = result / 0.3025;
+
+      document.querySelector("#text2").value = size.toFixed(2);
+
+   }
+
+   function meterToSize() {
+
+      let result = document.querySelector("#text3").value;
+
+      let size = result / 0.3025;
+
+      document.querySelector("#text4").value = size.toFixed(2);
+
+   }
+</script>
+</head>
+<body>
+	<div border = "1">
+   <input type="text" id="text1" size="10"> 제곱미터 &nbsp; -> &nbsp;
+   <input type="text" id="text2" size="10" readonly> 평
+
+   <button onclick="sizeToMeter();">변환</button>
+
+
+
+   <br>
+
+
+   <input type="text" id="text3" size="10"> 평 &nbsp; -> &nbsp;
+   <input type="text" id="text4" size="10" readonly> 제곱미터
+
+   <button onclick="meterToSize();">변환</button>
+	</div>
+
+
+   <br>
+
+
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+</style>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.3.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+
+/*2추차 퍼센트 상승  */
+
+
+$(function(){
+	$("#calButton").on("click",function(){
+		let squatRm = parseInt($("#squatRm").val());
+		let ohpRm = parseInt($("#ohpRm").val());
+		let deadLiftRm = parseInt($("#deadLiftRm").val());
+		let benchRm = parseInt($("#benchRm").val());
+		/*일단 저장은 성공 했다.  */
+		
+	/*이후에 이값으로 테이블 계산 하고 출력 해주어야 함. html(테이블 생성 함수로 ) 넣어주면 되겠다.  */	
+		let table = "<table class = 'table' id='Caltable' border-spacing = 5px   margin = 0px>";
+		let per = 0.3;
+		for(let i = 1;i<10;i++){
+			
+			
+			
+			
+			 if(i == 4 ){
+				per = 0.75;
+				
+			}else if(i == 6){
+				per = 0.95;
+				
+			}else if(i >= 6){
+				per += 0.075;
+			}
+			
+			else{
+				per += 0.1;
+				
+			}  
+			 	table += "<tr>";
+				table += "<td>"+(squatRm*per*0.9).toFixed(1)+"</td>";
+				table += "<td>"+(ohpRm*per*0.9).toFixed(1)+"</td>";
+				table += "<td>"+(deadLiftRm*per*0.9).toFixed(1)+"</td>";
+				table += "<td>"+(benchRm*per*0.9).toFixed(1)+"</td>";
+				table += "</tr>";
+					
+			
+		}
+		table += "</table>";
+		$("#Caltable").html(table);
+		
+		
+		
+		
+		
+		
+		
+	});	
+	
+});	
+	
+
+
+</script>
+    <link rel="stylesheet" href="style1.css" />
+	</head>
+    <body>
+      <div class="container-fluid">
+        <!--첫번쨰 컨테이너 .  -->
+
+        <img src="./image/wendler.png" width="90%" />
+        <div class="jumbotron">
+          <span class="logo"
+            ><h1>WENDLER 531<br />1WEEK</h1></span
+          >
+
+          <p>
+            <a class="btn btn-success btn-lg" href="./wHome.html" role="button"
+              >비린내 나는 애송이라면 이버튼을 눌러 뒤로 돌아가십쇼.</a
+            >
+          </p>
+          <img
+            src="./image/tomplat.png"
+            width="30%"
+            height="50%"
+            margin="80px"
+          />
+        </div>
+
+        <nav>
+          <ul>
+            <li><a href="./w1.html">WEEK1</a></li>
+            <li><a href="./w2.html">WEEK2</a></li>
+            <li><a href="./w3.html">WEEK3</a></li>
+            <li><a href="./w4.html">WEEK4</a></li>
+            <li><a href="./w5.html">WEEK5</a></li>
+            <li><a href="./w6.html">WEEK6</a></li>
+            <li><a href="./w7.html">WEEK7</a></li>
+          </ul>
+        </nav>
+
+        <!-- 첫번쨰 컨테이너 종료. -->
+      </div>
+
+</div>	
+	
+	
+	
+<div class = "container-fluid ">
+	
+	<div class = "row">
+	
+		<div class="col-md-6" Width 100% margin 0px>
+			<table class="table"  id = "maintable"><!--운동 프로그램 계산기 가 들어 가는 부분 -->
+					<tr>
+						<th rowspan = "2" >순서</th>
+						<th>3주차</th> 
+						<th>목적</th> 
+						<th>DAY1</th> 
+						<th>DAY2</th> 
+						<th>DAY3</th> 
+						<th>DAY4</th>
+					</tr>
+					
+					<tr>
+						
+						<th>횟수</th>
+						<th>세트</th>
+						<th>스쿼트</th>
+						<th>OHP</th>
+						<th>데드</th>
+						<th>벤치</th>
+					</tr>
+					
+					
+					
+					<tr><!-- 입력값이 계산되어 반영되는 행. -->
+						<th>워밍업1</th>
+						<td>5</td>
+						<td>1</td>
+						<td colspan = "4" rowspan = "9"><!--만들고 css로 해당 영역 확인해서 사이즈 맞춰줄것   -->
+							
+							<div id="Caltable">
+                    <span class="input">SQUAT:<br></span
+                    ><input type="text" id="squatRm"><br>
+                    <span class="input">OVERHEADPRESS:<br></span
+                    ><input type="text" id="benchRm" /><br>
+                    <span class="input">DEADLIFT:<br></span
+                    ><input type="text" id="deadLiftRm" /><br>
+                    <span class="input">BENCHPRESS:<br></span
+                    ><input type="text" id="ohpRm" /><br>
+
+                    <button id="calButton" class="btn btn-success">
+                      <h2>YAP BUDDY</h2>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+					
+					
+					
+					
+					<tr>
+						<th>워밍업2</th>
+						<td>5</td>
+						<td>1</td>
+						
+					</tr>
+					
+					<tr>
+						<th>워밍업3</th>
+						<td>5</td>
+						<td>1</td>
+						
+					</tr>
+					
+					<tr>
+						<th>본세트1</th>
+						<td>3</td>
+						<td>1</td>
+						
+					</tr>
+					
+					<tr>
+						<th>본세트2</th>
+						<td>5</td>
+						<td>1</td>
+						
+					</tr>
+					
+					<tr>
+						<th>PR세트</th>
+						<td>5+</td>
+						<td>1</td>
+						
+					</tr>
+					
+					
+					
+					<tr>
+						<th>joker1</th>
+						<td>1</td>
+						<td>1</td>
+						
+					</tr>
+					
+					<tr>
+						<th>joker2</th>
+						<td>1</td>
+						<td>1</td>
+						
+					</tr>
+					
+					<tr>
+						<th>joker3</th>
+						<td>1</td>
+						<td>1</td>
+						
+					</tr>
+				
+				
+				</table><!--메인테이블 종료 구간.  -->
+		</div><!--첫 번쨰 맨 왼쪽열 베인테이틀 종료  -->
+		
+		
+		<div class="col-md-6" id="info"> <!-- 오른쪽 정보가 들어가는 열이다.두번쨰 열  -->
+				
+				<ul class="list-group">
+  				<span id='info'><li class="list-group-item"><h1>3주차는 pr세트가  pr의  95%로 진행됩니다.</h1></li></span>
+  				<li class="list-group-item"><h1>용어 설명</h1></li>
+  				<li class="list-group-item">1. 워밍업 = 말그대로 워밍업입니다.	</li>
+ 				<li class="list-group-item">2. 본세트 1,2 = 본세트 3(=pr세트) 직전 세트를 말합니다. '횟수'라고 적혀있는 만큼만 반복하면 됩니다.</li>
+  				<li class="list-group-item">3. PR세트 = x+ 라고 써있습니다. X+의 의미는 최하 x개만큼은 하고 할수있는한 더 많이 하라는 의미입니다. 531에서 가장 중요합니다.<br>
+  											자세가 무너지지 않을한도에서 최대한 많이 합니다.(=약 RPE9에서 끊기.)	</li>
+  				<li class="list-group-item">4. 조커세트 = 스트렝스를 위한 고중량 저반복 세트입니다. 반드시 해야할 필요는 없으며 세트를 진행하다가도 너무 힘들면 그만둬도 됩니다.</li>
+  				<li class="list-group-item">웬들러는 5% 또는 10%를 추천했는데 저는 편의상 5%로 액셀을 설정했습니다. RPE9 까지만 합니다.</li>
+  				<li class="list-group-item">※RPE9 = 한번정도는 더 들 수 있을 정도. Ex 5번 들 수 있는 무게로 4번 들었다면 그때가 RPE 9</li>
+  				<li class="list-group-item">중요	PR세트가 끝나고 몸상태가 나쁘지 않을떄에만 조커세트를 진행합니다. 지첬다면 하지 않습니다.</li>
+  				<li class="list-group-item">그렇지 않으면 오버트레이닝으로 오히려 역효과가 날수 있습니다!</li>
+  				
+				</ul>
+		</div><!--오른 쪽 열 닫히는 구간  -->
+	
+	</div><!-- row닫히는 구간 -->
+	
+	
+	
+</div><!--두번쨰 컨테이너contaioner 종료  -->	
+	
+
+
+<div class = "container-fluid"><!--세번쨰 컨테이너  -->
+
+	
+	
+	
+	<footer class = "bottom"><!--루틴 출처를 저는 구간이다.  -->
+		출처 유튜브 백승현
+	</footer>
+	
+
+
+</div>
+
+</body>
+</html>

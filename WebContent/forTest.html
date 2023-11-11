@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	let num1;
+	let num2;
+	let result;
+	function sum(){
+		num1 = parseInt(document.querySelector("#text1").value);
+		console.log(num1);
+		num2 = parseInt(document.querySelector("#text2").value);
+		console.log(num1);
+		result = num1 + num2;
+		document.querySelector("#result").value = result;
+	}
+	
+	
+
+</script>
+</head>
+<body>
+
+
+	<div align="center">
+
+		<!-- <form> -->
+			<input type="text" id="text1" size="10">num1&nbsp;&nbsp; 
+			<input	type="text" id="text2" size="10">num2 
+			<br> <br>
+			<button id="button1" onclick="sum()">더하기</button>&nbsp;&nbsp;
+			<button id="button2"  onclick="di()">빼기</button>
+			<br>
+			결과값 <input type="text"  id="result" readonly>
+		<!-- </form> 폼안에 있는데 서브밋 안하고 버튼 해서 안들어 갔던거. --> 
+	</div>
+
+</body>
+</html>
